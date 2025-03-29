@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Market - Robux</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/robux.css">
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <meta name="description" content="Mario Market - Robux Exchange Rate">
+    <meta name="keywords" content="game account, anime game, mario market, robux">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header navigation - Bố cục SellRobux như trang chủ -->
+        <nav class="mario-enhanced-header">
+            <div class="container">
+                <div class="mario-header-content">
+                    <!-- Logo bên trái -->
+                    <a href="index.html" class="mario-logo-container">
+                        <img src="./images/mario-character.png" alt="Mario Character" class="mario-character">
+                        <span class="mario-logo-text">Mario Market</span>
+                    </a>
+                    
+                    <!-- Menu điều hướng - căn giữa -->
+                    <div class="mario-menu">
+                        <a href="index.html" class="mario-menu-item">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="./terms.html" class="mario-menu-item">
+                            <i class="fas fa-file-contract"></i>
+                            <span>Terms</span>
+                        </a>
+                        <a href="./community.html" class="mario-menu-item">
+                            <i class="fas fa-users"></i>
+                            <span>Community</span>
+                        </a>
+                        <a href="./robux.html" class="mario-menu-item active">
+                            <i class="fas fa-coins"></i>
+                            <span>Robux</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Đồng xu trang trí -->
+            <div class="mario-coin" style="top:30%; left:20%;">🪙</div>
+            <div class="mario-coin" style="top:10%; left:45%;">🪙</div>
+            <div class="mario-coin" style="top:20%; left:75%;">🪙</div>
+        </nav>
+
+        <!-- Script xử lý sự kiện cuộn và hiệu ứng -->
+        <script>
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.mario-enhanced-header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Thêm đồng xu mới
+            function addNewCoins() {
+                const header = document.querySelector('.mario-enhanced-header');
+                const positions = [
+                    {top: '15%', left: '30%'},
+                    {top: '25%', left: '60%'},
+                    {top: '5%', left: '80%'}
+                ];
+                
+                positions.forEach(pos => {
+                    const coin = document.createElement('div');
+                    coin.className = 'mario-coin';
+                    coin.innerHTML = '🪙';
+                    coin.style.top = pos.top;
+                    coin.style.left = pos.left;
+                    header.appendChild(coin);
+                    
+                    // Xóa đồng xu sau khi animation kết thúc
+                    setTimeout(() => {
+                        if (coin && coin.parentNode) {
+                            header.removeChild(coin);
+                        }
+                    }, 3000);
+                });
+            }
+            
+            // Thêm đồng xu mỗi 7 giây
+            setInterval(addNewCoins, 7000);
+        </script>
+
+        <div class="content-wrapper robux-background">
+            <div class="container mx-auto px-4 pt-12 pb-16">
+                <div class="max-w-3xl mx-auto">
+                    <!-- Robux Rate Card -->
+                    <div class="robux-rate-card p-8">
+                        <div class="text-center mb-6">
+                            <h1 class="text-3xl font-bold text-gray-800 mb-2">Robux Exchange Rate</h1>
+                            <p class="text-gray-600">Current rate for Robux purchases</p>
+                        </div>
+                        
+                        <div class="flex flex-col items-center justify-center">
+                            <!-- Logo Robux -->
+                            <img src="./images/robuxicon.png" alt="Robux Logo" class="robux-logo mb-6" onerror="this.src='./images/mario-character.png';this.onerror='';">
+                            
+                            <!-- Tỉ giá -->
+                            <div class="robux-rate">
+                                6.6$ / 1000 Robux
+                            </div>
+                            
+                            <p class="robux-text">
+                                Ready for service 24h/7d
+                            </p>
+                            
+                            <!-- Nút liên hệ -->
+                            <a href="https://discord.gg/YHm5RuCW45" target="_blank" class="robux-contact-button">
+                                <i class="fab fa-discord"></i>
+                                <span>Contact for buying</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-white py-6 border-t">
+            <div class="container mx-auto text-center">
+                <p class="text-gray-600">© 2024 Mario Market. All Rights Reserved.</p>
+                <div class="flex justify-center mt-2 space-x-4">
+                    <a href="#" class="text-gray-500 hover:text-blue-500 transition-colors">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-red-600 transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
